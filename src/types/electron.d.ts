@@ -308,6 +308,11 @@ export interface BackupManifest {
   }
 }
 
+export type CloseConfirmPayload = {
+  canMinimizeToTray: boolean
+  restoreMethod?: 'tray' | 'dock'
+}
+
 export interface ElectronAPI {
   window: {
     minimize: () => void
@@ -315,7 +320,7 @@ export interface ElectronAPI {
     isMaximized: () => Promise<boolean>
     onMaximizeStateChanged: (callback: (isMaximized: boolean) => void) => () => void
     close: () => void
-    onCloseConfirmRequested: (callback: (payload: { canMinimizeToTray: boolean }) => void) => () => void
+    onCloseConfirmRequested: (callback: (payload: CloseConfirmPayload) => void) => () => void
     respondCloseConfirm: (action: 'tray' | 'quit' | 'cancel') => Promise<boolean>
     openAgreementWindow: () => Promise<boolean>
     completeOnboarding: () => Promise<boolean>

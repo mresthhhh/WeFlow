@@ -5,8 +5,6 @@ on:
     tags:
       - "v*"
 
-  workflow_dispatch:
-
 permissions:
   contents: write
 
@@ -51,7 +49,7 @@ jobs:
       - name: Sync version with tag
         shell: bash
         run: |
-          VERSION="4.3.0"
+          VERSION=${GITHUB_REF_NAME#v}
           echo "Syncing package.json version to $VERSION"
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));p.version='$VERSION';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
 
@@ -122,7 +120,7 @@ jobs:
       - name: Sync version with tag
         shell: bash
         run: |
-          VERSION="4.3.0"
+          VERSION=${GITHUB_REF_NAME#v}
           echo "Syncing package.json version to $VERSION"
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));p.version='$VERSION';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
 
@@ -175,7 +173,7 @@ jobs:
       - name: Sync version with tag
         shell: bash
         run: |
-          VERSION="4.3.0"
+          VERSION=${GITHUB_REF_NAME#v}
           echo "Syncing package.json version to $VERSION"
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));p.version='$VERSION';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
 
@@ -228,7 +226,7 @@ jobs:
       - name: Sync version with tag
         shell: bash
         run: |
-          VERSION="4.3.0"
+          VERSION=${GITHUB_REF_NAME#v}
           echo "Syncing package.json version to $VERSION"
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));p.version='$VERSION';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
 
